@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="container">
+    <div class="top-nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        </div>
+
+
+    <section class="home" id="home">
+        <div class="sec">
+            <div>
+        <h3>Hello i'm Sangeetha Priya</h3>
+        <h1>Full Stack Developer</h1>
+        <p>Building responsive and mmake the odern web applications.</p>
+            </div>
+
+        <div class="imgae">
+        <img src="image.png" alt="Profile">
+    </div>
+    </div>
+    </section>
+
+
+    <section class="about" id="about">
+        <div class="sect">
+
+    <div class="txt">
+        <h4>Education</h4>
+        <p>
+            I am pursuing my academic studies while continuously developing my technical skills in web development, programming, and database management. I am passionate about expanding my knowledge and building practical projects.
+        </p>
+        <h4>Career objective</h4>
+        <p>My goal is to become a skilled Full Stack Developer by gaining hands-on experience in frontend and backend technologies. I aim to contribute to innovative projects, learn from industry professionals, and grow into a software developer capable of building complete web solutions.</p>
+    </div>
+
+    <div class="imge">
+        <img src="profile.jpeg" alt="Profile" style="width:250px; height:auto;">
+    </div>
+
+</div>
+<div class="but">
+        <button onclick="window.location.href='resume.pdf'" class="btn">
+    Download Resume
+</button>
+        <div class="icons">
+         <a href="https://www.linkedin.com/in/sangeetha-priya-g-9b8b1a1b3/"  target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sangeethapriyag" target="_blank"><i class="fab fa-github"></i></a> 
+        </div>
+        </div>
+       </section>
+
+
+    <section class="skills" id="skills">
+    <h2>Skills</h2>
+
+    <div class="skill">
+        <p>HTML</p>
+        <div class="bar">
+            <div class="progress" style="width:80%;">80%</div>
+        </div>
+    </div>
+
+    <div class="skill">
+        <p>CSS</p>
+        <div class="bar">
+            <div class="progress" style="width:85%;">85%</div>
+        </div>
+    </div>
+
+    <div class="skill">
+        <p>JavaScript</p>
+        <div class="bar">
+            <div class="progress" style="width:65%;">65%</div>
+        </div>
+    </div>
+
+    <div class="skill">
+        <p>Bootstrap</p>
+        <div class="bar">
+            <div class="progress" style="width:80%;">80%</div>
+        </div>
+    </div>
+</section>
+    <section class="projects" id="projects">
+        <h2> Projects</h2>
+        <div class="container">
+            <h5>Expense Tracker</h5>
+            <p>Expense tracker is the website used to calculate our daily expenses.<br>Built using HTML ,CSS, Python and Database Mysql.</p>
+        </div>
+        <div class="container">
+            <h5>Fitness tracker</h5>
+            <p>Fitness tracker is the website is used to maintain our health by excercise.<br>built by HTML , CSS , Bootstrap.</p>
+        </div>
+    </section>
+
+
+    <section class="contact" id="contact">
+        <h2> Contacts</h2>
+       <div class="container">
+     <div class="text">   
+     <h3 class="title">Let's get in touch.</h3>
+     <div class="para">
+        <p> Not sure where to start?</p>
+        <p > If you are interested in launching a digital website with we would love to chat.</p>
+        <p>We read every message. so, thanks in advance for making it good one.</p>
+        </div>
+        </div>
+        <form id="myform">
+            <div class="mb-3">
+               
+                <input type="text" class="form-control" id="name" placeholder="what's your name">
+            </div>
+            <div class="mb-3">
+                
+                <input type="email" class="form-control" id="email" placeholder="whats your work email">
+            </div>
+            <div class="mb-3">
+                
+                <textarea class="form-control" id="message" rows="4" placeholder="Enter your message"></textarea>
+            </div>
+             <button type="submit" class="btn btn-primary">Send message</button>
+           
+            </form>
+         </div>
+             
+
+<script>
+document.getElementById("myform").addEventListener("submit", async function(event) {
+    alert("Button clicked");
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    
+    if (name.length === 0) {
+        alert("Please enter your name");
+        return;
+    }
+
+    if (name.length > 50) {
+        alert("Name should be less than 50 characters");
+        return;
+    }
+
+    
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address");
+        return;
+    }
+
+    
+    if (message.length === 0) {
+        alert("Please enter a message");
+        return;
+    }
+
+    try {
+
+        const response = await fetch("http://localhost:3000/contact", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                message: message
+            })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert(data.message);
+            document.getElementById("myform").reset();
+        } else {
+            alert(data.message || "Something went wrong");
+        }
+
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Error connecting to backend");
+    }
+
+});
+</script>
+    </section>
+    </div>
+    
+</body>
+</html>

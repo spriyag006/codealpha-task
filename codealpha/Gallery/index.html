@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Gallery</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Image Gallery</h1>
+
+<div class="filters">
+    <button onclick="filterImages('all')">All</button>
+    <button onclick="filterImages('nature')">Nature</button>
+    <button onclick="filterImages('bird')">bird</button>
+    <button onclick="filterImages('moon')">moon</button>
+</div>
+
+<div class="gallery">
+
+    <div class="image nature">
+        <img src="nature1.jpg" onclick="openLightbox(this.src)">
+    </div>
+
+    <div class="image nature">
+        <img src="nature2.jpg" onclick="openLightbox(this.src)">
+    </div>
+
+    <div class="image bird">
+        <img src="bird1.jpg" onclick="openLightbox(this.src)">
+    </div>
+
+    <div class="image bird">
+        <img src="bird2.jpg" onclick="openLightbox(this.src)">
+    </div>
+
+    <div class="image moon">
+        <img src="moon1.jpg" onclick="openLightbox(this.src)">
+    </div>
+
+    <div class="image moon">
+        <img src="moon2.jpg" onclick="openLightbox(this.src)">
+    </div>
+
+</div>
+
+<div id="lightbox">
+    <span class="close" onclick="closeLightbox()">×</span>
+    <button class="prev" onclick="changeImage(-1)">❮</button>
+
+    <img id="lightbox-img">
+
+    <button class="next" onclick="changeImage(1)">❯</button>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
